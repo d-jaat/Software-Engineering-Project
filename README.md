@@ -28,7 +28,7 @@ Installation:
   Steps to Clone the repository:
     
     sh
-    git clone https://github.com/d-jaat/yourproject.git
+    git clone https://github.com/d-jaat/Software-Engineering-Project
     cd yourproject
     Set up a virtual environment (optional but recommended):
     
