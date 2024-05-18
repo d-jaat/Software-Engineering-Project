@@ -1,25 +1,5 @@
--- Create expenses_db database if not exists
-CREATE DATABASE IF NOT EXISTS expenses_db;
-
--- Use the expenses_db database
 USE expenses_db;
 
--- Create incomes table
-CREATE TABLE IF NOT EXISTS incomes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    amount FLOAT,
-    date DATE
-);
-
--- Create expenses table
-CREATE TABLE IF NOT EXISTS expenses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT,
-    amount FLOAT,
-    date DATE
-);
-
--- Create users table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -27,3 +7,19 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash VARCHAR(128) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS incomes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    amount FLOAT,
+    date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS expenses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    description TEXT,
+    amount FLOAT,
+    date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
