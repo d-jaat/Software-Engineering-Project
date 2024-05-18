@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Expense Graph - Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Expense Tracker</h1>
+        <p class="header__subtitle">Expense Tracking Line Chart</p>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% if graph_base64 %}
+                    <img src="data:image/png;base64,{{ graph_base64 }}" alt="Expense Graph" class="img-fluid">
+                    {% else %}
+                    <p>No expenses recorded yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Messages -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="alert alert-info" role="alert">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+

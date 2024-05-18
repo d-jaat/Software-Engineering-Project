@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #007acc;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin-bottom: 0;
+        }
+
+        .header__subtitle {
+            font-size: 1.2em;
+        }
+
+        .section {
+            padding: 30px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+         
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>Expense Tracker</h1>
+        <p class="header__subtitle">Track your income and expenses effortlessly</p>
+    </header>
+    
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Your Monthly Income</h2>
+                            <form action="{{ url_for('add_income') }}" method="post">
+                                <div class="form-group">
+                                    <label for="income">Enter your monthly income:</label>
+                                    <input type="number" step="0.01" class="form-control" id="income" name="income" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Income</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Add Expense</h2>
+                            <form action="{{ url_for('add_expense') }}" method="post">
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <input type="text" class="form-control" id="description" name="description" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="amount">Amount:</label>
+                                    <input type="number" step="0.01" class="form-control" id="amount" name="amount" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Expense</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Messages -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="alert alert-info" role="alert">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Links to other features -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="{{ url_for('view_expenses') }}" class="nav-link">View Expenses</a></li>
+                        <li class="list-group-item"><a href="{{ url_for('check_savings') }}" class="nav-link">Check Savings</a></li>
+                        <li class="list-group-item"><a href="{{ url_for('generate_graph') }}" class="nav-link">Generate Expense Graph</a></li>
+                        <li class="list-group-item"><a href="{{ url_for('clear_data') }}" class="nav-link">Clear Data</a></li>
+                        <li class="list-group-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+

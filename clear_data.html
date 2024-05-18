@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Data - Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Expense Tracker</h1>
+        <p class="header__subtitle">Clear All Data</p>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>Are you sure you want to clear all income and expense data?</p>
+                    <form action="{{ url_for('clear_data_confirmation') }}" method="post">
+                        <button type="submit" class="btn btn-danger">Yes, Clear Data</button>
+                    </form>
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
