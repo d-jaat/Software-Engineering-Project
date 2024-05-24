@@ -71,9 +71,9 @@ models/: Contains the database models.
 config.py: Configuration settings for the application.
 
 Contributions:
-  tanishq (221031030@juitsolan.in)
-  tanu (221031022@juitsolan.in)
-  devvrat (221031035@juitsolan.in)
+  Tanishq Bhardwaj(tanishqb41@gmail.com)
+  Tanu Sharma(221031022@juitsolan.in)
+  Devvrat Chaudhary(devchaudhary713939@gmail.com)
 
 Fork the repository.
 Create a new branch (git checkout -b feature/your-feature).
@@ -89,4 +89,4 @@ Modules
     Matplotlib
     bcrypt
     Contact
-For any questions or suggestions, please contact [devchaudhary713939@gmail.com].
+For any questions or suggestions, please contact [devchaudhary713939@gmail.com or tanishqb41@gmail.com].
